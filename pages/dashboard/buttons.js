@@ -7,10 +7,18 @@ import {
   Fab,
   ButtonGroup,
 } from "@mui/material";
-import BaseCard from "../src/components/baseCard/BaseCard";
+import BaseCard from "../../src/components/baseCard/BaseCard";
 import FeatherIcon from "feather-icons-react";
+import { useSession } from "next-auth/react";
 
 const Buttons = () => {
+
+  const {status} = useSession({
+    required: true
+  })
+
+
+
   return (
     <Grid container spacing={0}>
       {/* ------------------------- row 1 ------------------------- */}
@@ -145,5 +153,7 @@ const Buttons = () => {
     </Grid>
   );
 };
+
+Buttons.auth = true
 
 export default Buttons;

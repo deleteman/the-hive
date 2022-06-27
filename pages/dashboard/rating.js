@@ -1,7 +1,8 @@
 import React from "react";
 import { Grid, Rating, Box, Typography } from "@mui/material";
-import BaseCard from "../src/components/baseCard/BaseCard";
+import BaseCard from "../../src/components/baseCard/BaseCard";
 import FeatherIcon from "feather-icons-react";
+import { useSession } from "next-auth/react";
 
 const labels = {
   0.5: "Useless",
@@ -19,6 +20,12 @@ const labels = {
 const Ratings = () => {
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
+
+const {status} = useSession({
+    required: true
+  })
+
+
   return (
     <Grid container spacing={0}>
       <Grid item xs={12} lg={12}>
@@ -72,4 +79,5 @@ const Ratings = () => {
   );
 };
 
+Ratings.auth = true
 export default Ratings;

@@ -64,4 +64,6 @@ const Alerts = () => {
   );
 };
 
+Alerts.auth = true
+
 export default Alerts;

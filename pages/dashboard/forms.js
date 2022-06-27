@@ -11,9 +11,17 @@ import {
   FormControl,
   Button,
 } from "@mui/material";
-import BaseCard from "../src/components/baseCard/BaseCard";
+import { useSession } from "next-auth/react";
+import BaseCard from "../../src/components/baseCard/BaseCard";
 
 const Forms = () => {
+const {status} = useSession({
+    required: true
+  })
+
+
+
+
   return (
     <Grid container spacing={0}>
       <Grid item xs={12} lg={12}>
@@ -109,5 +117,7 @@ const Forms = () => {
     </Grid>
   );
 };
+
+Forms.auth = true
 
 export default Forms;

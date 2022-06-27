@@ -2,42 +2,42 @@ const Menuitems = [
   {
     title: "Dashbaord",
     icon: "home",
-    href: "/",
+    href: "/dashboard/",
   },
   {
     title: "Buttons",
     icon: "disc",
-    href: "/buttons",
+    href: "/dashboard/buttons",
   },
   {
     title: "Forms",
     icon: "layout",
-    href: "/forms",
+    href: "/dashboard/forms",
   },
   {
     title: "Alerts",
     icon: "info",
-    href: "/alerts",
+    href: "/dashboard/alerts",
   },
   {
     title: "Ratings",
     icon: "star",
-    href: "/rating",
+    href: "/dashboard/rating",
   },
   {
     title: "Images",
     icon: "image",
-    href: "/image",
+    href: "/dashboard/image",
   },
   {
     title: "Pagination",
     icon: "user",
-    href: "/pagination",
+    href: "/dashboard/pagination",
   },
   {
     title: "Tables",
     icon: "grid",
-    href: "/table",
+    href: "/dashboard/table",
   },
 ];
 

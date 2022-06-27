@@ -1,5 +1,6 @@
 import { Grid, ImageList, ImageListItem } from "@mui/material";
-import BaseCard from "../src/components/baseCard/BaseCard";
+import { useSession } from "next-auth/react";
+import BaseCard from "../../src/components/baseCard/BaseCard";
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {
@@ -71,6 +72,11 @@ const itemData = [
   },
 ];
 const Images = () => {
+const {status} = useSession({
+    required: true
+  })
+
+
   return (
     <Grid container spacing={0}>
       <Grid item xs={12} lg={12}>
@@ -101,4 +107,5 @@ const Images = () => {
   );
 };
 
+Images.auth = true
 export default Images;
