@@ -23,8 +23,8 @@ This project is actively being developed. Here is the list of features required 
 
 - ✅ OAuth with Github
 - ✅ Set up Github repo
-- ⏱ Set up remote database
-- ⏱ Start saving user information into DB
+- ✅ Set up remote database
+- ✅ Start saving user information into DB
 - ⏱ Pull public project information from Github
 - ⏱ Save projects data into DB
 - ⏱ List ingested repos and allow users to select which ones to publish to The Hive
