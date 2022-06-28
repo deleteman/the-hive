@@ -41,7 +41,7 @@ const ListOfProjects = ({repos}) => {
         </TableHead>
         <TableBody>
           {repos.map((proj) => (
-            <TableRow key={proj.name}>
+            <TableRow key={proj.id}>
               <TableCell>
                 <Typography
                   sx={{
@@ -49,7 +49,7 @@ const ListOfProjects = ({repos}) => {
                     fontWeight: "500",
                   }}
                 >
-                  {proj.name}
+                  {proj.full_name}
                 </Typography>
               </TableCell>
               <TableCell>
@@ -68,8 +68,8 @@ const ListOfProjects = ({repos}) => {
                       gutterBottom
                       component="div"
                     >
-                      {proj.github_url}
-                      <Link href={proj.github_url} color="primary" target="_blank" rel="noopener" variant="inherit">
+                      {proj.url}
+                      <Link href={proj.url} color="primary" target="_blank" rel="noopener" variant="inherit">
                         <OpenInNew />
                       </Link>
                     </Typography>

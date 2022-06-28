@@ -4,62 +4,53 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 
-import { useSession } from "next-auth/react";
+import {  getSession, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import ListOfProjects from "../../src/components/dashboard/ListOfProjects";
 import FilterGithubReposModal from "../../src/components/dashboard/FilterGithubReposModal";
 
+function Profile({}) {
+    
+    const {status, data: sessionData} = useSession({
+        required: true
+    })
+    const [me, setMe] = useState({})
+    const [repos, setRepos] = useState([])
 
-export async function getServerSideProps(context) {
-    return {
-        props: {
-            repos: [
-                {name: "The Hive", github_url: "https://github.com/deleteman/the-hive"},
-                {name: "Vatican", github_url: "https://github.com/deleteman/vatican"},
-                {name: "lfpr", github_url: "https://github.com/deleteman/lfpr"},
-            ]
+    async function getRepos() {
+        const url = "/api/local_repos?user_id=" + sessionData.user.id
+        let reposResp = await fetch(url)
+        setRepos(await reposResp.json())
+    }
+    useEffect(() => {
+        if(status == 'authenticated') {
+            setMe(sessionData.user)
+            getRepos()
         }
-    }
-}
-
-function Profile({repos}) {
-
-  const {status, data} = useSession({
-    required: true
-  })
-  const [me, setMe] = useState({})
-
-  useEffect(() => {
-      console.log("setting user")
-      console.log(data)
-    if(status == 'authenticated') {
-        console.log("is authed")
-        setMe(data.user)
-    }
-  }, [status])
-
-  return (
-    <Grid container spacing={0}>
+    }, [status])
+    
+    return (
+        <Grid container spacing={0}>
         <ProfileCard avatar_url={me.avatar_url} title={me.name}>
-          <Box sx={{ "& button": { mx: 1 } }}>
-            <FilterGithubReposModal />
-            <Button color="error" size="small" variant="contained">
-              Other option
-            </Button>
-            <Button color="secondary" size="small" variant="contained">
-              Other option
-            </Button>
-          </Box>
+        <Box sx={{ "& button": { mx: 1 } }}>
+        <FilterGithubReposModal />
+        <Button color="error" size="small" variant="contained">
+        Other option
+        </Button>
+        <Button color="secondary" size="small" variant="contained">
+        Other option
+        </Button>
+        </Box>
         </ProfileCard>
- 
-      {/* ------------------------- row 1 ------------------------- */}
-      <Grid item xs={12} lg={12}>
+        
+        {/* ------------------------- row 1 ------------------------- */}
+        <Grid item xs={12} lg={12}>
         <ListOfProjects repos={repos} />
-      </Grid>
-    </Grid>
-  );
-}
-
-Profile.auth = true
-
-export default Profile
+        </Grid>
+        </Grid>
+        );
+    }
+    
+    Profile.auth = true
+    
+    export default Profile

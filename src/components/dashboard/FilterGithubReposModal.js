@@ -32,7 +32,7 @@ export default function FilterGithubReposModal() {
   const [noReposMsg, setNoReposMsg] = useState(false)
   const [importingRepo, setImportingRepo] = useState("")
   const [alertError, setAlertError] = useState("")
-  const {status, data} = useSession()
+  const {status, data: sessionData} = useSession()
   
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -52,7 +52,7 @@ export default function FilterGithubReposModal() {
     setSearchingRepos(true)
     let resp = await fetch('/api/repos?q=' + filterBy + '&p=1', {
       headers: {
-        "github-token": data.user.access_token
+        "github-token": sessionData.user.access_token
       }
     })
     setSearchingRepos(false)
@@ -67,7 +67,11 @@ export default function FilterGithubReposModal() {
   const importRepo = async (repoName) => {
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'github-token': sessionData.user.access_token
+
+      },
       body: JSON.stringify({ repo_name: repoName })
     };
     

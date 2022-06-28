@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-import {saveUser, getUserByEmail} from '../../../src/models/users'
+import {saveUser, getUserByEmail, saveUserOrUpdate} from '../../../src/models/users'
 import {logger} from '../../../src/utils/logger'
 
 export default NextAuth({
@@ -9,6 +9,11 @@ export default NextAuth({
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+      authorization: {
+        params: {
+          scope: 'repo read:user user:email read:org',
+        },
+      },
     }),
     // ...add more providers here
   ],
@@ -19,7 +24,7 @@ export default NextAuth({
       logger('info', account)
       logger('info', credentials)
       logger('info', profile)
-      await saveUser({
+      await saveUserOrUpdate({
         name: user.name,
         email: user.email,
         avatar_url: user.image,
@@ -30,8 +35,9 @@ export default NextAuth({
     async session({session, token, user}) {
       session.user.avatar_url = session.user.image
       if(!session.user.access_token) {
-        let token = await getUserByEmail(session.user.email, 'access_token')
+        let token = await getUserByEmail(session.user.email, 'access_token, id')
         session.user.access_token = token.access_token
+        session.user.id = token.id
       }
       console.log(session)
       return session
