@@ -29,9 +29,10 @@ This project is actively being developed. Here is the list of features required 
 - ✅ Start saving user information into DB
 - ✅ Create user profile page
 - ✅ Pull public project information from Github
-- 🧑‍💻 S‍ave projects data into DB
-- ⏱ List ingested repos and allow users to select which ones to publish to The Hive
-- ⏱ Add the ability to pull company repos
+- ✅ S‍ave projects data into DB
+- ✅ List ingested repos 
+- ✅ Add the ability to pull company repos
+- ⏱ Allow users to select which ones to publish to The Hive
 - ⏱ Define search engine stack
 - ⏱ Index project data into search engine
 - ⏱ Add ability to search for projects
