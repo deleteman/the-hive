@@ -9,7 +9,9 @@ export function logger(level, msg) {
                 now.getMinutes(),
                 now.getSeconds()].join(":")
     if(typeof(msg) != 'string') {
-        msg = JSON.stringify(msg)
+        console.dir(msg, {depth: null, colors: true})
+    } else {
+        console.log(dStr, "::[", level.toUpperCase(), "]::", msg)
     }
-    console.log(dStr, "::[", level.toUpperCase(), "]::", msg)
+
 }

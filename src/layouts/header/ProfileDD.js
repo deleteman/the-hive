@@ -101,8 +101,8 @@ const ProfileDD = () => {
               aria-label="secondary mailbox folder"
               onClick={handleClose4}
             >
-              <ListItemButton>
-                <ListItemText primary="Edit Profile" />
+              <ListItemButton component="a" href="/dashboard/profile">
+                <ListItemText primary="View My Profile" />
               </ListItemButton>
               <ListItemButton>
                 <ListItemText primary="Account" />

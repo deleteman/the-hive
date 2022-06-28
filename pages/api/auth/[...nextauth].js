@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-import {saveUser} from '../../../src/models/users'
+import {saveUser, getUserByEmail} from '../../../src/models/users'
 import {logger} from '../../../src/utils/logger'
 
 export default NextAuth({
@@ -16,12 +16,25 @@ export default NextAuth({
     async signIn({ user, account, profile, email, credentials }) {
       logger('info', "--- User logged in--")
       logger('info', user)
+      logger('info', account)
+      logger('info', credentials)
+      logger('info', profile)
       await saveUser({
         name: user.name,
         email: user.email,
-        avatar_url: user.image
+        avatar_url: user.image,
+        access_token: account.access_token
       })
       return true
+    },
+    async session({session, token, user}) {
+      session.user.avatar_url = session.user.image
+      if(!session.user.access_token) {
+        let token = await getUserByEmail(session.user.email, 'access_token')
+        session.user.access_token = token.access_token
+      }
+      console.log(session)
+      return session
     }
   }
 })
