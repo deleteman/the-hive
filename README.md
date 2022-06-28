@@ -1,6 +1,6 @@
 # Welcome to The Hive
 
-![The Hive]()
+![The Hive](public/logo.png)
 
 Getting started with OSS should be trivial by now, but while getting the first easy PR is... well, easy, moving on from there is not.
 Picking the right project to contribute can be a daunting task:
