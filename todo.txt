@@ -1,0 +1,5 @@
+# Todo
+
+This is way better at tracking progress than all of those fancy apps and its just a simple text file.
+
+- make svg versions of logo
