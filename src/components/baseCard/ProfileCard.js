@@ -13,8 +13,10 @@ import {
 
 const ProfileCard = (props) => {
   return (
-    <Card>
-      <Box p={2} display="flex" alignItems="center">
+    <Card sx={{
+      width: "100%"
+      }}>
+      <Box p={2} display="flex" alignItems="center" >
         <Box display="flex" alignItems="center">
           <Avatar
             src={props.avatar_url}
@@ -33,8 +35,8 @@ const ProfileCard = (props) => {
               alignItems: "center",
             }}
           >
-          <Typography variant="h5"   
-              fontWeight="400"
+          <Typography variant="h2"   
+              fontWeight="bold"
               sx={{ ml: 1 }}>{props.title}</Typography>
         </Box>
       </Box>

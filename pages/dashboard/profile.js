@@ -34,18 +34,13 @@ function Profile({}) {
         <ProfileCard avatar_url={me.avatar_url} title={me.name}>
         <Box sx={{ "& button": { mx: 1 } }}>
         <FilterGithubReposModal />
-        <Button color="error" size="small" variant="contained">
-        Other option
-        </Button>
-        <Button color="secondary" size="small" variant="contained">
-        Other option
-        </Button>
+       
         </Box>
         </ProfileCard>
         
         {/* ------------------------- row 1 ------------------------- */}
         <Grid item xs={12} lg={12}>
-        <ListOfProjects repos={repos} />
+        <ListOfProjects repos={repos} updater={getRepos}/>
         </Grid>
         </Grid>
         );

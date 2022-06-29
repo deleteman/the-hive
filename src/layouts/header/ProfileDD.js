@@ -102,17 +102,9 @@ const ProfileDD = () => {
               onClick={handleClose4}
             >
               <ListItemButton component="a" href="/dashboard/profile">
-                <ListItemText primary="View My Profile" />
+                <ListItemText primary="My Profile" />
               </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Account" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Change Password" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="My Settings" />
-              </ListItemButton>
+              
             </List>
           </Box>
           <Divider />

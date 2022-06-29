@@ -1,12 +1,44 @@
 import {supabase as db } from '../utils/db'
 import {logger } from '../utils/logger'
 
-export async function getReposBy(field, value) {
+const TABLE_NAME = 'user_repos'
+
+export async function updateRepo(data, {key, value}) {
+    try {
+        logger('info', "Updating a repository...")
+        logger('info', 'Values: ')
+        logger('info', data)
+        logger('info', 'key: ' + key)
+        logger('info', 'match value: ' + value)
+
+        let {error} = await db 
+                            .from(TABLE_NAME)
+                            .update(data, {returning: 'minimal'})
+                            .eq(key, value)
+        
+        if(error) {
+            logger('error', "Error while updating the repo...")
+            logger('error', error)
+            throw new Error(error)
+        }
+        return true
+    } catch (e) {
+        logger('error', "Error trying to update a repo from DB")
+        logger('error', e)
+        logger('error', "/Error trying to update a repo from DB")
+        return -1
+    }
+
+
+}
+
+export async function getReposBy(field, value, {sortBy = 'name'}) {
     try {
         logger('info', "Getting repo by " + field + " with value " + value )
         let {error, data }= await db
-                        .from('user_repos')
+                        .from(TABLE_NAME)
                         .select("*")
+                        .order(sortBy)
                         .eq(field,value)
         if(error) {
             logger('error', "Error while checking the repo...")
@@ -27,7 +59,7 @@ export async function saveRepo(repo) {
     try {
         logger('info', "Checking if repo exists...")
         let {error, count}= await db
-                        .from('user_repos')
+                        .from(TABLE_NAME)
                         .select('full_name', {count: 'exact', head: true})
                         .eq('full_name',repo.full_name)
         if(error) {
