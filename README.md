@@ -32,12 +32,12 @@ This project is actively being developed. Here is the list of features required 
 - ✅ S‍ave projects data into DB
 - ✅ List ingested repos 
 - ✅ Add the ability to pull company repos
-- ⏱ Allow users to select which ones to publish to The Hive
+- ✅ Allow users to select which ones to publish to The Hive
+- ⏱ Start processing project data daily and generate metrics
+- ⏱ Display metrics inside project details
 - ⏱ Define search engine stack
 - ⏱ Index project data into search engine
 - ⏱ Add ability to search for projects
-- ⏱ Start processing project data daily and generate metrics
-- ⏱ Display metrics inside project details
 
 ## Testing The Hive locally
 
