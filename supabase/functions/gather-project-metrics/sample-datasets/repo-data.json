@@ -1,0 +1,45 @@
+/// repo data
+
+{
+  "id": 1296269,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
+  "name": "Hello-World", //update
+  "full_name": "octocat/Hello-World",
+
+  "private": false,
+  "description": "This your first repo!", //update
+  
+  "license": { //update
+    "key": "mit",
+    "name": "MIT License",
+    "url": "https://api.github.com/licenses/mit",
+    "spdx_id": "MIT",
+    "node_id": "MDc6TGljZW5zZW1pdA==",
+    "html_url": "https://github.com/licenses/mit"
+  },
+  "forks_count": 9, //history
+  "forks": 9,
+  "stargazers_count": 80, //history
+  "watchers_count": 80, //history
+  "watchers": 80,
+  "size": 108,
+  "default_branch": "master",
+  "open_issues_count": 0, //history
+  "open_issues": 0,
+  
+  "has_issues": true, //update
+  "has_projects": true,
+  "has_wiki": true, //update
+  "has_pages": false,
+  "has_downloads": true,
+  "archived": false,
+  "disabled": false,
+  "visibility": "public",
+  "pushed_at": "2011-01-26T19:06:43Z",
+  "created_at": "2011-01-26T19:01:12Z",
+  "updated_at": "2011-01-26T19:14:43Z",
+  
+  "subscribers_count": 42,
+
+  
+}

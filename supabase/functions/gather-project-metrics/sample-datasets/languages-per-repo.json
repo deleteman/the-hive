@@ -1,0 +1,6 @@
+///languages by repo data
+
+{ //update
+  "C": 78769, //total bytes of that language, could be used to calculate percentages
+  "Python": 7769
+}
