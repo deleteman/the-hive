@@ -4,6 +4,7 @@
 
 import { serve } from "https://deno.land/std@0.131.0/http/server.ts"
 import { supabaseClient } from "../_shared/supabaseClient.ts"
+import { response } from "../_shared/utils.ts"
 
 console.log("Hello from gather-project-metrics")
 
@@ -29,15 +30,16 @@ serve(async (req) => {
   //get repo details: GET /repos/{owner}/{repo} (done)
   //get PRs from a project: GET /repos/{owner}/{repo}/pulls (done)
   //get issues from a repo: GET /repos/{owner}/{repo}/issues (done)
-  //get commits from a repo: GET /repos/{owner}/{repo}/commits
-  //get overall repo community profile: GET /repos/{owner}/{repo}/community/profile
-  //get number of clones of a repo in the last 14 days: GET /repos/{owner}/{repo}/traffic/clones
+  //get commits from a repo: GET /repos/{owner}/{repo}/commits (done)
+  //get overall repo community profile: GET /repos/{owner}/{repo}/community/profile (skip)
+  //get number of clones of a repo in the last 14 days: GET /repos/{owner}/{repo}/traffic/clones (skip)
 
   const functionNames:string[] = [
     "get-repo-languages",
     "get-repo-details",
     "get-repo-pulls",
-    "get-repo-issues"
+    "get-repo-issues",
+    "get-repo-commits"
   ]
 
   repos?.forEach(r => { //for each repo
@@ -59,10 +61,7 @@ serve(async (req) => {
   //let results = await Promise.all(execQueue.map( q => q()))
 
 
-  return new Response(
-    "done",
-    { headers: { "Content-Type": "application/json" } },
-  )
+  return response("done")
 })
 
 // To invoke:
