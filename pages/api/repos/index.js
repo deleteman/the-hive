@@ -175,7 +175,8 @@ async function findRepos(req, res, headers) {
 
         if (q.trim() != "") { //are we filtering?
             filteredRepos = repos.filter( function filterFN(r) {
-                return r.name.indexOf(q) != -1
+                // case insensitive filtering
+                return r.name.toLowerCase().indexOf(q.toLowerCase()) != -1
             })
         } else {
             filteredRepos = repos
