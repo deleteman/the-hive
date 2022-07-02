@@ -68,6 +68,7 @@ const ListOfProjects = ({repos, updater}) => {
           {repos.map((proj) => (
             <TableRow key={proj.id}>
               <TableCell>
+                <Link href={"/dashboard/repos/" + proj.id}>
                 <Typography
                   sx={{
                     fontSize: "15px",
@@ -76,6 +77,7 @@ const ListOfProjects = ({repos, updater}) => {
                 >
                   {proj.full_name}
                 </Typography>
+              </Link >
               </TableCell>
               <TableCell>
                 <Box
@@ -115,6 +117,8 @@ const ListOfProjects = ({repos, updater}) => {
                       <CircularProgress size={20}/>
                       }
                     </Button> 
+                  
+
                   </Box>
                 </Box>
               </TableCell>
