@@ -33,14 +33,14 @@ This project is actively being developed. Here is the list of features required 
 - ✅ List ingested repos 
 - ✅ Add the ability to pull company repos
 - ✅ Allow users to select which ones to publish to The Hive
-- ⏱ Start processing project data daily and generate metrics
+- ✅ Start processing project data daily and generate metrics
    - ✅ Get repo languages
    - ✅ Get repo details
    - ✅ Get repo PR info
    - ✅ Get repo issue info
-   - ⏱ Get repo commit info
-   - ⏱ Get repo community health info
-   - ⏱ Get repo clone info
+   - ✅  Get repo commit info
+   - 🏃‍♂️ Get repo community health info (skipping it for now)
+   - ️🏃‍♂️ Get repo clone info (skipping it for now)
 
 - ⏱ Display metrics inside project details
 - ⏱ Define search engine stack
