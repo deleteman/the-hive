@@ -32,6 +32,33 @@ export async function updateRepo(data, {key, value}) {
 
 }
 
+export async function getFullRepoDetailsBy(field, value, {sortBy = 'name'}) {
+  try {
+        logger('info', "Getting full repo details by " + field + " with value " + value )
+        const {error, data }= await db
+                            .from(TABLE_NAME)
+
+                            .select(`*,
+                                    repo_languages(
+                                      language,
+                                      bytes)`)
+                            .order(sortBy)
+                            .eq(field,value)
+        if(error) {
+            logger('error', "Error while checking the repo...")
+            logger('error', error)
+            throw new Error(error)
+        }
+
+        return data
+    } catch (e) {
+        logger('error', "Error trying to get the repos from DB")
+        logger('error', e)
+        logger('error', "/Error trying to get the repos from DB")
+        return -1
+    }
+}
+
 export async function getReposBy(field, value, {sortBy = 'name'}) {
     try {
         logger('info', "Getting repo by " + field + " with value " + value )

@@ -1,4 +1,4 @@
-import { getReposBy, updateRepo } from "../../../src/models/repos"
+import { getReposBy, updateRepo, getFullRepoDetailsBy } from "../../../src/models/repos"
 import {
     logger
 } from "../../../src/utils/logger"
@@ -13,7 +13,7 @@ const GET_ACTIONS = {
 }
 
 async function getRepoDetails(repo_id) {
-    const response = await getReposBy('id', repo_id, {sortBy:'name'})
+    const response = await getFullRepoDetailsBy('id', repo_id, {sortBy:'name'})
     return response[0]
 }
 
