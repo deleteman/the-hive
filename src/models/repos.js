@@ -41,7 +41,25 @@ export async function getFullRepoDetailsBy(field, value, {sortBy = 'name'}) {
                             .select(`*,
                                     repo_languages(
                                       language,
-                                      bytes)`)
+                                      bytes),
+                                    historic_repo_pulls(
+                                        saved_at,
+                                        open_pulls_count,
+                                        closed_pulls_count,
+                                        avg_time_to_merge,
+                                        avg_time_to_close
+                                    ),
+                                    historic_repo_data(
+                                        forks_count,
+                                        stars_count,
+                                        saved_at
+                                    ),
+                                    historic_repo_issues(
+                                        saved_at,
+                                        avg_time_to_close,
+                                        closed_issues,
+                                        open_issues
+                                    )`)
                             .order(sortBy)
                             .eq(field,value)
         if(error) {

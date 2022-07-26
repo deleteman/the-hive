@@ -1,4 +1,4 @@
-import { getReposBy, updateRepo, getFullRepoDetailsBy } from "../../../src/models/repos"
+import { getReposBy, updateRepo, getFullRepoDetailsBy } from "../../../src/models/repos.js"
 import {
     logger
 } from "../../../src/utils/logger"
