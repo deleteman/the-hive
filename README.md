@@ -42,8 +42,8 @@ This project is actively being developed. Here is the list of features required 
    - 🏃‍♂️ Get repo community health info (skipping it for now)
    - ️🏃‍♂️ Get repo clone info (skipping it for now)
 
-- ⏱ Display metrics inside project details
-- ⏱ Define search engine stack
+- ✏️ Display metrics inside project details
+- ✅ Define search engine stack
 - ⏱ Index project data into search engine
 - ⏱ Add ability to search for projects
 
